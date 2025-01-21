@@ -23,10 +23,8 @@ func SetupRouter(mode string) *gin.Engine {
 
 	r := gin.New()
 	// 使用自定义logger、recovery中间件取代gin默认的
-	r.Use(middlewares.Logger())
-	//r.Use(logger.GinLogger(), logger.GinRecovery(true))
+	r.Use(middlewares.Logger(), middlewares.Recovery(true))
 
-	// 本地测试页面 线上需要关闭
 	r.LoadHTMLGlob("templates/*") // 加载模板
 	r.Static("/assets", "static") // 设置静态文件路径
 
