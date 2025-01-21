@@ -9,7 +9,7 @@
 package logger
 
 import (
-	"app-server/setting"
+	"app-server/settings"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -58,7 +58,7 @@ const (
 var lg *zap.Logger
 
 // Init 初始化全局日志 todo
-func Init(cfg *setting.LogConfig, mode string) (err error) {
+func Init(cfg *settings.LogConfig, mode string) (err error) {
 	writeSyncer := getLogWriter(cfg.Filepath+"/"+cfg.Filename, cfg.MaxSize, cfg.MaxBackups, cfg.MaxAge) // 写入器
 	encoder := getEncoder()                                                                             // 编码器
 	var l = new(zapcore.Level)
@@ -191,8 +191,8 @@ type Logger struct {
 //	// 创建日志写入器
 //	lumberJackLogger := &lumberjack.Logger{
 //		Filename:   "storage/logs" + "/" + name + ".log",
-//		MaxSize:    setting.GetConf().MaxSize, // MB
-//		MaxBackups: setting.GetConf().MaxBackups,
+//		MaxSize:    settings.GetConf().MaxSize, // MB
+//		MaxBackups: settings.GetConf().MaxBackups,
 //		MaxAge:     numDay,
 //		Compress:   true, // 是否压缩
 //		LocalTime:  true,

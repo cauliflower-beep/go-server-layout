@@ -1,4 +1,4 @@
-package setting
+package settings
 
 import (
 	"flag"
@@ -28,12 +28,16 @@ type SvrConfig struct {
 	Addr      string `mapstructure:"addr"`
 	Port      int    `mapstructure:"port"`
 
+	*Auth        `mapstructure:"auth"`
 	*LogConfig   `mapstructure:"log"`
 	*MySQLConfig `mapstructure:"mysql"`
 	*RedisConfig `mapstructure:"redis"`
 	*MongoConfig `mapstructure:"mongodb"`
 }
 
+type Auth struct {
+	JwtExpire int64 `mapstructure:"jwt_expire"` // token过期时间
+}
 type MongoConfig struct {
 	Uri           string     `mapstructure:"uri"`
 	ConnectTimout int        `mapstructure:"connect-timeout"` // 连接超时时间 s

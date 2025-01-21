@@ -7,3 +7,5 @@
  */
 
 package controller
+
+const CtxtUserIDKey = "userID" // 保存在上下文中的UID
