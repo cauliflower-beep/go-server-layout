@@ -1,0 +1,48 @@
+name: "report"
+mode: "debug"
+addr: 0.0.0.0
+port: 8000
+version: "v0.0.1"
+start_time: "2024-11-07"
+machine_id: 1
+
+auth:
+  jwt_expire: 8760
+
+log:
+  level: "info"
+  filename: "app.log"
+  filepath: "storage/logs"
+  max_size: 500
+  max_age: 30
+  max_backups: 7
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: "root"
+  password: "admin123"
+  dbname: ""
+  parse_time: true
+  charset: utf8mb4
+  max_open_conns: 200
+  max_idle_conns: 50
+  table_prefix: "t_"
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 100
+
+mongodb:
+  uri: mongodb://192.168.2.3:27017
+  connect-timeout: 60
+  database: app
+  credential:
+    auth-mechanism: SCRAM-SHA-1
+    auth-source: admin
+    username: ""
+    password: ""
+    password-set: false
