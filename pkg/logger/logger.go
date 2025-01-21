@@ -21,9 +21,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	//"gopkg.in/natefinch/lumberjack.v2"
 )
 
 type Level int8
@@ -96,36 +96,13 @@ func getEncoder() zapcore.Encoder {
 }
 
 func getLogWriter(filename string, maxSize, maxBackup, maxAge int) zapcore.WriteSyncer {
-	//lumberJackLogger := &lumberjack.Logger{
-	//	Filename:   filename,
-	//	MaxSize:    maxSize,
-	//	MaxBackups: maxBackup,
-	//	MaxAge:     maxAge,
-	//}
-	//return zapcore.AddSync(lumberJackLogger)
-	return nil
-}
-
-// GinLogger 接收gin框架默认的日志
-func GinLogger() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		start := time.Now()
-		path := c.Request.URL.Path
-		query := c.Request.URL.RawQuery
-		c.Next()
-
-		cost := time.Since(start)
-		lg.Info(path,
-			zap.Int("status", c.Writer.Status()),
-			zap.String("method", c.Request.Method),
-			zap.String("path", path),
-			zap.String("query", query),
-			zap.String("ip", c.ClientIP()),
-			zap.String("user-agent", c.Request.UserAgent()),
-			zap.String("errors", c.Errors.ByType(gin.ErrorTypePrivate).String()),
-			zap.Duration("cost", cost),
-		)
+	lumberJackLogger := &lumberjack.Logger{
+		Filename:   filename,
+		MaxSize:    maxSize,
+		MaxBackups: maxBackup,
+		MaxAge:     maxAge,
 	}
+	return zapcore.AddSync(lumberJackLogger)
 }
 
 // GinRecovery recover掉项目可能出现的panic，并使用zap记录相关日志

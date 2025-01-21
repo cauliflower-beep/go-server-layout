@@ -11,9 +11,11 @@ require (
 	github.com/spf13/viper v1.19.0
 	github.com/swaggo/gin-swagger v1.3.0
 	go.uber.org/zap v1.21.0
+	github.com/natefinch/lumberjack v2.0.0+incompatible
 )
 
 require (
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	github.com/PuerkitoBio/purell v1.1.0 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/bytedance/sonic v1.12.6 // indirect

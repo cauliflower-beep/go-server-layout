@@ -1,6 +1,7 @@
 package main
 
 import (
+	"app-server/pkg/logger"
 	"app-server/pkg/snowflake"
 	"app-server/router"
 	"app-server/settings"
@@ -16,10 +17,10 @@ func main() {
 	}
 
 	// 初始化日志
-	//if err := logger.Init(settings.GetConf().LogConfig, settings.GetConf().Mode); err != nil {
-	//	fmt.Printf("init logger failed, err:%v\n", err)
-	//	return
-	//}
+	if err := logger.Init(settings.GetConf().LogConfig, settings.GetConf().Mode); err != nil {
+		fmt.Printf("init logger failed, err:%v\n", err)
+		return
+	}
 
 	// 初始化数据库连接 Mysql | MongoDB | Redis
 

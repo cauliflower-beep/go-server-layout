@@ -9,6 +9,7 @@
 package router
 
 import (
+	"app-server/middlewares"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -22,6 +23,7 @@ func SetupRouter(mode string) *gin.Engine {
 
 	r := gin.New()
 	// 使用自定义logger、recovery中间件取代gin默认的
+	r.Use(middlewares.Logger())
 	//r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
 	// 本地测试页面 线上需要关闭
