@@ -8,14 +8,15 @@ require (
 	github.com/fsnotify/fsnotify v1.8.0
 	github.com/gin-contrib/pprof v1.5.2
 	github.com/gin-gonic/gin v1.10.0
+	github.com/natefinch/lumberjack v2.0.0+incompatible
+	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/viper v1.19.0
 	github.com/swaggo/gin-swagger v1.3.0
 	go.uber.org/zap v1.21.0
-	github.com/natefinch/lumberjack v2.0.0+incompatible
 )
 
 require (
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
+	github.com/BurntSushi/toml v1.4.0 // indirect
 	github.com/PuerkitoBio/purell v1.1.0 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/bytedance/sonic v1.12.6 // indirect
@@ -66,6 +67,7 @@ require (
 	google.golang.org/protobuf v1.36.1 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

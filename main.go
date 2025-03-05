@@ -16,6 +16,9 @@ func main() {
 		return
 	}
 
+	appLog := logger.NewDayLogger("app", 3)
+	appLog.Info("config reload success.")
+
 	// 初始化日志
 	if err := logger.Init(settings.GetConf().LogConfig, settings.GetConf().Mode); err != nil {
 		fmt.Printf("init logger failed, err:%v\n", err)
